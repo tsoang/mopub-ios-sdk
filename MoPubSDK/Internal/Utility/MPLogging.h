@@ -31,7 +31,8 @@ void _MPLogWarn(NSString *format, ...);
 void _MPLogError(NSString *format, ...);
 void _MPLogFatal(NSString *format, ...);
 
-#if MP_DEBUG_MODE && !SPECS
+//#if MP_DEBUG_MODE && !SPECS
+#if DEBUG
 
 #define MPLogTrace(...) _MPLogTrace(__VA_ARGS__)
 #define MPLogDebug(...) _MPLogDebug(__VA_ARGS__)
@@ -45,8 +46,11 @@ void _MPLogFatal(NSString *format, ...);
 #define MPLogTrace(...) {}
 #define MPLogDebug(...) {}
 #define MPLogInfo(...) {}
-#define MPLogWarn(...) {}
-#define MPLogError(...) {}
-#define MPLogFatal(...) {}
+#define MPLogWarn(...) _MPLogWarn(__VA_ARGS__)
+#define MPLogError(...) _MPLogError(__VA_ARGS__)
+#define MPLogFatal(...) _MPLogFatal(__VA_ARGS__)
+//#define MPLogWarn(...) {}
+//#define MPLogError(...) {}
+//#define MPLogFatal(...) {}
 
 #endif
