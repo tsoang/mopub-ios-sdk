@@ -29,7 +29,6 @@
     if (location) {
         [TFTTapForTap setLocation:location];
     }
-    [self.banner startShowingAds];
 }
 
 - (CGRect)frameForCustomEventInfo:(NSDictionary *)info
