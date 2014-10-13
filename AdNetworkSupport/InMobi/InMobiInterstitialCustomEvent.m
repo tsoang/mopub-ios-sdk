@@ -9,7 +9,7 @@
 #import "MPInstanceProvider.h"
 #import "MPLogging.h"
 
-#define kInMobiAppID    @"YOUR_INMOBI_APP_ID"
+#define kInMobiAppID    @""   // It's defined in INMOBI_APP_ID
 
 @interface MPInstanceProvider (InMobiInterstitials)
 
@@ -45,7 +45,7 @@
 - (void)requestInterstitialWithCustomEventInfo:(NSDictionary *)info
 {
     MPLogInfo(@"Requesting InMobi interstitial");
-    self.inMobiInterstitial = [[MPInstanceProvider sharedProvider] buildIMInterstitialWithDelegate:self appId:kInMobiAppID];
+    self.inMobiInterstitial = [[MPInstanceProvider sharedProvider] buildIMInterstitialWithDelegate:self appId:INMOBI_APP_ID];
     NSMutableDictionary *paramsDict = [NSMutableDictionary dictionary];
     [paramsDict setObject:@"c_mopub" forKey:@"tp"];
     [paramsDict setObject:MP_SDK_VERSION forKey:@"tp-ver"];
@@ -80,7 +80,7 @@
 
 - (void)interstitial:(IMInterstitial *)ad didFailToReceiveAdWithError:(IMError *)error {
 
-    MPLogInfo(@"InMobi banner did fail with error: %@", error.localizedDescription);
+    MPLogInfo(@"InMobi interstitial did fail with error: %@", error.localizedDescription);
     [self.delegate interstitialCustomEvent:self didFailToLoadAdWithError:nil];
 }
 
